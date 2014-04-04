@@ -2,11 +2,12 @@
 /** Module dependencies */
 var express = require('express'),
   URL = require('url'),
-  fs = require('fs');
+  fs = require('fs'),
+  mongoose =require('mongoose');
 
 // Globals
 GLOBAL._url = URL;
-GLOBAL.mongoose = require('mongoose');
+GLOBAL.mongoose = mongoose;
 GLOBAL.Schema = mongoose.Schema;
 GLOBAL.ObjectId = mongoose.Types.ObjectId;
 GLOBAL.currentDir = __dirname;
@@ -55,7 +56,8 @@ app.all('*', function(req, res, next) {
 
 // Routes 
  var routes = require('./app/api/routes'),
-   user = require('./app/api/routes/user');
+   user = require('./app/api/routes/user'),
+   converter = require('./app/api/routes/converter');
 
 // app.get('/app/partials/:name', routes.partials);
 // app.get('/app/partials/:folderName/:name', routes.partials);
@@ -68,6 +70,8 @@ app.get('/api/user/:id', user.findById);
 app.post('/api/user', user.addUser);
 app.put('/api/user/:id', user.updateUser);
 app.delete('/api/user/:id', user.deleteUser);
+
+app.get('/api/convert/:from/:to/:value', converter.convert);
 
 
 // View routes

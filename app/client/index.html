@@ -21,5 +21,18 @@
       <button id="find" type="submit">Find user</button>
     </form>
   </div>  -->
+   <div>
+     User Finder:
+     <form ng-submit='convert(currency)'>
+       <label> value </label>
+       <input type='text' id='username' name='username' placeholder='username' ng-model='currency.value'/>
+       <br />
+       <label> converted value: </label>
+       <label id='firstName' ng-model='currency.convertedValue'></label>
+       <br/>
+       <button id="find" type="submit">Find user</button>
+     </form>
+   </div>
+
 </body>
 </html>
