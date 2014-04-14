@@ -2,37 +2,38 @@
 <html lang="en" ng-app>
 <head>
   <meta charset="utf-8">
-  <title>My HTML File</title>
+  <title>Currency converter</title>
   <script src="./lib/angular.min.js"></script>
   <script type="text/javascript" src="./app.js"></script>
   <script type="text/javascript" src="./indexCtrl.js"></script>
 </head>
 <body ng-controller="indexCtrl">
-   <p>1 + 2 = {{ 1 + 2 }}</p>
-  <!--<div>
-    User Finder:
-    <form ng-submit='add(user)'>
-      <label> username </label>
-      <input type='text' id='username' name='username' placeholder='username'/>
-      <br />
-      <label> First Name: </label>
-      <label id='firstName'></label>
-      <br/>
-      <button id="find" type="submit">Find user</button>
-    </form>
-  </div>  -->
-   <div>
-     User Finder:
-     <form ng-submit='convert(currency)'>
+  <div>
+    Add transaction:
+    <form ng-submit='add(transaction)'>
        <label> value </label>
-       <input type='text' id='username' name='username' placeholder='username' ng-model='currency.value'/>
+       <input type='text' id='value' name='value' placeholder='value' ng-model='transaction.value'/>
+       <input type='text' id='value' name='value' placeholder='value' ng-model='transaction.value'/>
+       <input type='text' id='value' name='value' placeholder='value' ng-model='transaction.value'/>
+       <input type='text' id='value' name='value' placeholder='value' ng-model='transaction.value'/>
        <br />
        <label> converted value: </label>
-       <label id='firstName' ng-model='currency.convertedValue'></label>
+       <label id='convertedValue' ng-model='currency.convertedValue'>{{currency.convertedValue}}</label>
        <br/>
-       <button id="find" type="submit">Find user</button>
+       <button id="convert" type="submit">Convert</button>
+    </form>
+  </div>  
+   <div>
+     Currency converter
+     <form ng-submit='convert(currency)'>
+       <label> value </label>
+       <input type='text' id='value' name='value' placeholder='value' ng-model='currency.value'/>
+       <br />
+       <label> converted value: </label>
+       <label id='convertedValue' ng-model='currency.convertedValue'>{{currency.convertedValue}}</label>
+       <br/>
+       <button id="convert" type="submit">Convert</button>
      </form>
    </div>
-
 </body>
 </html>

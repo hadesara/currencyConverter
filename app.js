@@ -11,6 +11,7 @@ GLOBAL.mongoose = mongoose;
 GLOBAL.Schema = mongoose.Schema;
 GLOBAL.ObjectId = mongoose.Types.ObjectId;
 GLOBAL.currentDir = __dirname;
+var currencies = {};
 var app = module.exports = express();
 
 // Configurations
@@ -56,7 +57,7 @@ app.all('*', function(req, res, next) {
 
 // Routes 
  var routes = require('./app/api/routes'),
-   user = require('./app/api/routes/user'),
+   transaction = require('./app/api/routes/transaction'),
    converter = require('./app/api/routes/converter');
 
 // app.get('/app/partials/:name', routes.partials);
@@ -65,11 +66,11 @@ app.all('*', function(req, res, next) {
 
 
 // API: User routes
-app.get('/api/user', user.findAll);
-app.get('/api/user/:id', user.findById);
-app.post('/api/user', user.addUser);
-app.put('/api/user/:id', user.updateUser);
-app.delete('/api/user/:id', user.deleteUser);
+app.get('/api/transaction', transaction.findAll);
+app.get('/api/transaction/:id', transaction.findById);
+app.post('/api/transaction', transaction.addTransaction);
+app.put('/api/transaction/:id', transaction.updateTransaction);
+app.delete('/api/transaction/:id', transaction.deleteTransaction);
 
 app.get('/api/convert/:from/:to/:value', converter.convert);
 
@@ -80,4 +81,5 @@ app.get('/api/convert/:from/:to/:value', converter.convert);
 // Start server
 app.listen(app.get('port'), function(){
   console.log('Express server listening at port %d in %s mode', this.address().port, app.settings.env);
+  converter.updateConversion();
 });
