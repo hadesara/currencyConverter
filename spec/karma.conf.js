@@ -1,34 +1,44 @@
-module.exports = function(config){
-  config.set({
+module.exports = function(config) {
+    config.set({
+        basePath: '../',
 
-    basePath : '../',
+        files: [
+            'app/client/lib/angular.min.js',
+            'app/client/app.js',
+            'app/client/indexCtrl.js'
+            // ,
+            // 'app/lib/angular/angular.js',
+            // 'app/lib/angular/angular-*.js',
+            // 'app/js/**/*.js',
+            // 'test/lib/recaptcha/recaptcha_ajax.js',
+            // 'test/lib/angular/angular-mocks.js',
+            // 'test/unit/**/*.js'
+        ],
 
-    files : [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'app/js/**/*.js',
-      'test/unit/**/*.js'
-    ],
+        exclude: [
+            //'app/lib/angular/angular-loader.js',
+            'app/client/lib/angular/*.min.js'
+            //,'app/lib/angular/angular-scenario.js'
+        ],
 
-    autoWatch : true,
+        autoWatch: true,
 
-    frameworks: ['jasmine'],
+        frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+        browsers: ['PhantomJS'],
 
-    plugins : [
+        plugins: [
+            'karma-junit-reporter',
             'karma-chrome-launcher',
             'karma-firefox-launcher',
-            'karma-jasmine'
-            ],
+            'karma-jasmine',
+            'karma-phantomjs-launcher'
+        ],
 
-    junitReporter : {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }
+        junitReporter: {
+            outputFile: 'test_out/unit.xml',
+            suite: 'unit'
+        }
 
-  });
-};
+    })
+}
